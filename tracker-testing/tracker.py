@@ -5,6 +5,7 @@ import random
 tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', 'MOSSE', 'CSRT']
 tracker_type = tracker_types[6]
 
+
 if tracker_type == 'BOOSTING':
     tracker = cv2.legacy.TrackerBoosting_create()
 elif tracker_type == 'MIL':
@@ -23,7 +24,7 @@ elif tracker_type == 'CSRT':
 # Change tracker_type index to check if objects are created:
 print(tracker)
 
-video = cv2.VideoCapture('test_face_tracking.mp4')
+video = cv2.VideoCapture('test_2.mp4')
 # load video
 if not video.isOpened():
     print('[ERROR] video file not loaded')
