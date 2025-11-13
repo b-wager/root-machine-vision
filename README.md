@@ -76,6 +76,8 @@ And that’s it! You now have a custom cascade.xml file that you can use to dete
 ## What is Root?
 Root is a board game with a default set of 4 players, each with different game pieces, as each player follows a unique set of rules to earn points and win the game. We became interested in using machine vision to identify different game pieces because of the variety of pieces, and the visually noisy game board that we expected would provide a fun challenge. We are also big fans of this game, so that helped convince us to pursue this project. The image below shows how the board might look mid game.
 
+![image](writeup_images/root-board-game-map-setup.webp)
+
 ## Project Goals
 The initial goal for this project was to create a program or train a model to identify and classify all Eyrie (blue bird) pieces, meaning both roosts and warriors. Roosts are flat square pieces, blue with a leaf logo in white. Warriors are 3D blocks, shaped vaguely like birds. 
 
