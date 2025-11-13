@@ -154,7 +154,7 @@ For our final model, we combined aspects of the first two models. We reused all 
 On one image, our models detects all roosts and has one false positive:
 ![image](writeup_images/model3_results1.png)
 
-On another image, there are three flase positives and one roost is missed:
+On another image, there are three false positives and one roost is missed:
 ![image](writeup_images/model3_results2.png)
 
 ## Side Quest: CRST Tracking
