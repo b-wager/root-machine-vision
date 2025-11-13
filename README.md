@@ -95,12 +95,14 @@ Haar Cascade was originally developed for facial recognition. It works by extrac
 The black and white boxes below visualize the features. Numerically, each feature is defined as the sum of pixels in the black box, minus the sum of pixels in the white box. These values can be used to understand the starkness of edges, lines, and four-rectangle areas.
 
 ![image](writeup_images/haar_features.jpg)
-Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
+
+Figure from *Robust Real-Time Face Detection* by Paul Viola & Michael J. Jones 
 
 Paul Viola and Michael J. Jones’ paper, *Robust Real-Time Face Detection*, shows this example of an edge feature used in face detection. In most face images, there will be a stark edge between the area of the eyes (black rectangle) and the tops of the cheeks (white rectangle). One can imagine how this feature between eyes and cheeks would be useful in identifying faces.
 
 ![image](writeup_images/Haar_face.png)
-Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
+
+Figure from *Robust Real-Time Face Detection* by Paul Viola & Michael J. Jones 
 
 Back to training. The features with the lowest error rate in classifying the training images are selected to be used in the cascade model. Features are then organized into different stages which, together, make up the cascade model. 
 
@@ -108,7 +110,7 @@ To classify an image, the model runs one stage at a time over windows, or region
 
 ![image](writeup_images/cascade.png)
 
-Image from An Automated System for Cephalometric Soft-tissue Landmark Detection by Said Elaiwat, Mohammad Azad, & Mohammad Khursheed Alam
+Image from *An Automated System for Cephalometric Soft-tissue Landmark Detection* by Said Elaiwat, Mohammad Azad, & Mohammad Khursheed Alam
 
 
 ## The Plan
