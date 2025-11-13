@@ -129,7 +129,7 @@ We trained our first model on 15 positive images and 56 negative images. Positiv
 
 The GIF below shows the annotations done on one of our positive training images.
 
-![image](writeup_images/opencv_annotation.webm)
+![image](writeup_images/opencv_annotation.gif)
 
 ## Training the model
 Once images were annotated, we set up our files and used OpenCV’s createcascade and traincascade tools to train our first model. All models we trained for this project have 20 stages.
