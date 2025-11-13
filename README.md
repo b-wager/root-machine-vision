@@ -176,4 +176,4 @@ Remember that Haar cascade uses features, which are calculated as the sum of pix
 
 Another option is to filter by color. After we detect the game pieces with our model, we could filter out the false positives by comparing the colors of all the detected “pieces” to what we expect. We could also try out other recognition models that do take color into consideration.
 
-Finally, we would like to be able to store a representation of the current game state on a computer from a picture. This would require knowing where each clearing is on the board and being able to detect the number and type of pieces in each one. If images are 
+A long term goal of this work is to be able to store a representation of the current game state on a computer from a picture. This would require knowing where each clearing is on the board and being able to detect the number and type of pieces in each one. If images of the board are consistently taken from the same position, we could hard code the locations of each clearing, for example. 
