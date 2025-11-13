@@ -95,16 +95,23 @@ Haar Cascade was originally developed for facial recognition. It works by extrac
 The black and white boxes below visualize the features. Numerically, each feature is defined as the sum of pixels in the black box, minus the sum of pixels in the white box. These values can be used to understand the starkness of edges, lines, and four-rectangle areas.
 
 ![image](writeup_images/haar_features.jpg)
-Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
+
+Figure from *Robust Real-Time Face Detection* by Paul Viola & Michael J. Jones 
 
 Paul Viola and Michael J. Jones’ paper, *Robust Real-Time Face Detection*, shows this example of an edge feature used in face detection. In most face images, there will be a stark edge between the area of the eyes (black rectangle) and the tops of the cheeks (white rectangle). One can imagine how this feature between eyes and cheeks would be useful in identifying faces.
 
 ![image](writeup_images/Haar_face.png)
-Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
+
+Figure from *Robust Real-Time Face Detection* by Paul Viola & Michael J. Jones 
 
 Back to training. The features with the lowest error rate in classifying the training images are selected to be used in the cascade model. Features are then organized into different stages which, together, make up the cascade model. 
 
 To classify an image, the model runs one stage at a time over windows, or regions, of the image. Each region goes through the stages one by one. If any stage is failed, that region is skipped over and the stages start again on the next region. This saves lots of computation time, as some regions are quickly ruled out, and the most specific features are only run on regions likely to be the target object. If a region does pass all stages, it’s classified as the target object
+
+![image](writeup_images/cascade.png)
+
+Image from *An Automated System for Cephalometric Soft-tissue Landmark Detection* by Said Elaiwat, Mohammad Azad, & Mohammad Khursheed Alam
+
 
 ## The Plan
 Once we had landed on Haar cascade classifying as our method, we had a clear path forward:
@@ -169,4 +176,4 @@ Remember that Haar cascade uses features, which are calculated as the sum of pix
 
 Another option is to filter by color. After we detect the game pieces with our model, we could filter out the false positives by comparing the colors of all the detected “pieces” to what we expect. We could also try out other recognition models that do take color into consideration.
 
-Finally, we would like to be able to store a representation of the current game state on a computer from a picture. This would require knowing where each clearing is on the board and being able to detect the number and type of pieces in each one. If images are 
+A long term goal of this work is to be able to store a representation of the current game state on a computer from a picture. This would require knowing where each clearing is on the board and being able to detect the number and type of pieces in each one. If images of the board are consistently taken from the same position, we could hard code the locations of each clearing, for example. 
