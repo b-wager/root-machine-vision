@@ -106,6 +106,11 @@ Back to training. The features with the lowest error rate in classifying the tra
 
 To classify an image, the model runs one stage at a time over windows, or regions, of the image. Each region goes through the stages one by one. If any stage is failed, that region is skipped over and the stages start again on the next region. This saves lots of computation time, as some regions are quickly ruled out, and the most specific features are only run on regions likely to be the target object. If a region does pass all stages, it’s classified as the target object
 
+![image](writeup_images/cascade.png)
+
+Image from An Automated System for Cephalometric Soft-tissue Landmark Detection by Said Elaiwat, Mohammad Azad, & Mohammad Khursheed Alam
+
+
 ## The Plan
 Once we had landed on Haar cascade classifying as our method, we had a clear path forward:
 
