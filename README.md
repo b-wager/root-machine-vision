@@ -77,9 +77,12 @@ And that’s it! You now have a custom cascade.xml file that you can use to dete
 Root is a board game with a default set of 4 players, each with different game pieces, as each player follows a unique set of rules to earn points and win the game. We became interested in using machine vision to identify different game pieces because of the variety of pieces, and the visually noisy game board that we expected would provide a fun challenge. We are also big fans of this game, so that helped convince us to pursue this project. The image below shows how the board might look mid game.
 
 ![image](writeup_images/root-board-game-map-setup.webp)
+Photo from Leder Games
 
 ## Project Goals
 The initial goal for this project was to create a program or train a model to identify and classify all Eyrie (blue bird) pieces, meaning both roosts and warriors. Roosts are flat square pieces, blue with a leaf logo in white. Warriors are 3D blocks, shaped vaguely like birds. 
+
+![image](writeup_images/Roost_warrior.png)
 
 Starting with this goal, we also had the idea of expanding our model/program to be able to detect other game pieces, with the lofty end goal of detecting all types of pieces and the areas of the board. This would allow it to know the game state from a photo. We are considering continuing with this project in the hopes of reaching this end goal.
 
@@ -91,7 +94,13 @@ Haar Cascade was originally developed for facial recognition. It works by extrac
 
 The black and white boxes below visualize the features. Numerically, each feature is defined as the sum of pixels in the black box, minus the sum of pixels in the white box. These values can be used to understand the starkness of edges, lines, and four-rectangle areas.
 
+![image](writeup_images/haar_features.jpg)
+Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
+
 Paul Viola and Michael J. Jones’ paper, *Robust Real-Time Face Detection*, shows this example of an edge feature used in face detection. In most face images, there will be a stark edge between the area of the eyes (black rectangle) and the tops of the cheeks (white rectangle). One can imagine how this feature between eyes and cheeks would be useful in identifying faces.
+
+![image](writeup_images/Haar_face.png)
+Figure from Robust Real-Time Face Detection by Paul Viola & Michael J. Jones 
 
 Back to training. The features with the lowest error rate in classifying the training images are selected to be used in the cascade model. Features are then organized into different stages which, together, make up the cascade model. 
 
@@ -131,6 +140,8 @@ For our final model, we combined aspects of the first two models. We reused all 
 
 ## Side Quest: CRST Tracking
 Between model training, we investigated CRST object tracking as a possible alternative. We quickly discovered that OpenCV’s CRST tracking tool would not suit our project needs, as the object to track had to be identified manually or by a separate tool before tracking began. We consider object tracking a future possibility for this project. Now that we have a classifier that identifies roost pieces, we could combine our cascade classifier with an object tracker to identify and track pieces through a video of gameplay. 
+
+![image](writeup_images/tracking.gif)
 
 ## Results analysis: Strengths and Weaknesses
 Model 3 is a very hopeful success! When run on the training images, it has a hit rate of 1, meaning all roosts are detected in our training set. This does not mean it will never miss roosts in other images.
