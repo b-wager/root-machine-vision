@@ -129,21 +129,33 @@ We trained our first model on 15 positive images and 56 negative images. Positiv
 
 The GIF below shows the annotations done on one of our positive training images.
 
+![image](writeup_images/opencv_annotation.webm)
+
 ## Training the model
 Once images were annotated, we set up our files and used OpenCV’s createcascade and traincascade tools to train our first model. All models we trained for this project have 20 stages.
 
 ### Model 1
 Our first model did not perform very well and rarely ever made positive classifications (whether accurate or not). This meant that almost every roost piece was missed, and that this model would not be reliable for identifying roost pieces. However, testing the model on live video, we noticed that if the roost was held at a very specific angle, the model could detect it. This led us to train the next model.
 
+![image](writeup_images/model1_results.png)
+
 ### Model 2
 We believed our first model was struggling due to a lack of positive training images (15 is very little). So, we decided to use OpenCV’s image generation tool, `opencv_createsamples`. We used a real image of a single roost to generate a set of training images of the roost rotated and transformed over our background images. 
 
 We expected this model to perform much better than Model 1 due to the larger volume of positive training images and the variety of angles and perspectives of the generated roosts. However, this model ended up overguessing, often detecting roosts where there were none, and missing the actual roosts. 
 
+![image](writeup_images/model2_results.png)
+
 ### Model 3 (Our favorite)
 It was still clear to us that Model 1 suffered from too few training images, but generated images seemed unsuccessful for Model 2. 
 
 For our final model, we combined aspects of the first two models. We reused all of the real, annotated images from Model 1. We also copied each image and transformed them at intervals of 3 degrees to create new training images. These transformations gave us a positive image sample size that was 120 times larger than the first model, and still only used real images, which are more successful at training than generated images. This model ended up performing very well and was able to detect almost all roosts while only providing about 0-2 false positives per test image.
+
+On one image, our models detects all roosts and has one false positive:
+![image](writeup_images/model3_results1.png)
+
+On another image, there are three flase positives and one roost is missed:
+![image](writeup_images/model3_results2.png)
 
 ## Side Quest: CRST Tracking
 Between model training, we investigated CRST object tracking as a possible alternative. We quickly discovered that OpenCV’s CRST tracking tool would not suit our project needs, as the object to track had to be identified manually or by a separate tool before tracking began. We consider object tracking a future possibility for this project. Now that we have a classifier that identifies roost pieces, we could combine our cascade classifier with an object tracker to identify and track pieces through a video of gameplay. 
